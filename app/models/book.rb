@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   
   belongs_to :user
-  attachment :new
-end
+  validates :title, presence: true
+  validates :body, presence: true
+end  

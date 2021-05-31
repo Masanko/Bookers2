@@ -142,3 +142,53 @@ Things you may want to cover:
           <li><a class="fas fa-book-open nav-link text-light" href="/books"> Books</a></li>
           <li><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out"> logout</a></li>
         </ul>
+        
+        
+        
+        <div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+     <p id="notice"></p>
+      <div class="form-group">
+       <h2>User info</h2>
+        <%= form_with model:@user, local:true do |f| %>
+      </div>
+      <div class="form-group">
+       <label for="inputName">Name</label></br>
+       <%= f.text_field :name, autofocus: true, id:"inputName"%>
+      </div>
+      <div class="form-group">
+       <label for="user_image">Image</label></br>
+       <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      </div>
+      <div class="form-group">
+       <label for="user_introduction">introduction</label></br>
+       <%= f.text_area :introduction ,class: 'orm-control introduction'%>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update User" ,class:'btn btn-secondary'%>
+      </div>
+<% end %>
+     </div>
+   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+<div class="form-group">
+<h2>User info</h2>
+<%= form_with model:@user, local:true do |f| %>
+<div>
+<div class="form-group">
+  <label for="inputName">Name</label>
+  <%= f.text_field :name, autofocus: true, id:"inputName"%>
+ 
+  <label for="inputImage">Image</label>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  <label for="inputImage">introduction</label>
+  <%= f.text_area :introduction %>
+
+  <%= f.submit "Update User" %>
+<% end %>

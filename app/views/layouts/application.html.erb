@@ -8,9 +8,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
 <header>
-  <body class="d-flex flex-column vh-100">
+  <body>
   <% if user_signed_in? %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -21,16 +21,17 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li><%= link_to "Home",  user_path(current_user.id), class: 'fas fa-home nav-link text-light'%></li>
-          <li><%= link_to "Users", user_path(current_user.id), class: 'fas fa-users nav-link text-light'%></li>
-          <li><%= link_to "Books", destroy_user_session_path, method: :delete, class: 'fas fa-book-open nav-link text-light'%></li>
+          <li><%= link_to "Users", "/users", class: 'fas fa-users nav-link text-light'%></li>
+          <li><%= link_to "Books", "/books", class: 'fas fa-book-open nav-link text-light'%></li>
           <li><%= link_to "logout", destroy_user_session_path, method: :delete , class: 'fas fa-sign-out-alt nav-link text-light'%></li>
         </ul>
       </div>
     </div>
   </nav>
 
+
   <% else %>
-  
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/"><span>Bookers</span></a>
@@ -51,19 +52,18 @@
       <li class="nav-item">
         <%= link_to "login", new_user_session_path , class: 'fas fa-sign-in-alt nav-link text-light'%>
       </li>
+      <% end %>
         </ul>
       </div>
     </div>
   </nav>
 </header>
 
-    <% end %>
-
 
 
     <%= yield %>
-    
-    <footer>
+
+<footer>
   <div class="container mt-5">
   	<div class="row">
     	<div class="mx-auto">

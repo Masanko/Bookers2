@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     
   end
   
+  def index
+      @users = User.all
+      @user = current_user
+      @books = @user.books.page(params[:page]).reverse_order
+      @book = Book.new
+  end
+  
   def edit
     @user = User.find(params[:id])
     
@@ -13,9 +20,17 @@ class UsersController < ApplicationController
 
   def update
    @user =User.find(params[:id])
+   
+   if 
    @user.update(user_params)
    redirect_to user_path(@user.id)
+   
+ else
+    render action: :edit
+    
   end
+  
+end
  
   def user_params
    params.require(:user).permit(:name, :profile_image, :introduction)
